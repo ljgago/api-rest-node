@@ -1,0 +1,127 @@
+openapi: "3.0.1"
+info:
+  description: "Diseño de una api simple para el challeger de Emergencias S.A."
+  version: "1.0.0"
+  title: "API importadora EMEA S.A."
+  license:
+    name: "MIT"
+    url: "https://mit-license.org"
+servers:
+  - url: "https://black-wood-1374.fly.dev/clients"
+paths:
+  /clients:
+    get:
+      summary: List all Clients
+      operationId: listClients
+      tags:
+        - Clients
+      responses:
+        200:
+          description: A list of all clients.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Client"
+    post:
+      summary: Create a new client
+      operationId: createClient
+      tags:
+        - Clients
+      requestBody:
+        description: Client to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      responses:
+        201:
+          description: Null response
+          content: {}
+        405:
+          description: Invalid input
+          content: {}
+  /clients/{id}:
+    get:
+      summary: Return a specific client
+      operationId: getClient
+      tags:
+        - Clients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The client ID
+          schema:
+            type: number
+      responses:
+        200:
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        405:
+          description: Invalid input
+          content: {}
+    put:
+      summary: Update a specific client
+      operationId: updateClient
+      tags:
+        - Clients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The client ID
+          schema:
+            type: number
+      requestBody:
+        description: Client to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      responses:
+        201:
+          description: Null response
+          content: {}
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      summary: Remove a specific client
+      operationId: deleteClient
+      tags:
+        - Clients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The client ID
+          schema:
+            type: number
+      responses:
+        200:
+          description: Client removed
+          content: {}
+        405:
+          description: Invalid input
+          content: {}
+components:
+  schemas:
+    Client:
+      required:
+        - id
+        - name
+        - email
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
