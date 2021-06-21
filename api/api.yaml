@@ -7,7 +7,7 @@ info:
     name: "MIT"
     url: "https://mit-license.org"
 servers:
-  - url: "https://black-wood-1374.fly.dev/clients"
+  - url: "https://black-wood-1374.fly.dev"
 paths:
   /clients:
     get:
