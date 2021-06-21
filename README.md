@@ -1,27 +1,35 @@
-# Challenger importadora EMEA S.A.
+# Challenge importadora EMEA S.A.
 
 ## Descripción
 
-Diseño de una API para simple para el challenger de Emergencias S.A. para el puesto de backend.
+Diseño de una API para simple para el challenge de Emergencias S.A. para el puesto de backend.
 
 Descripción del enpoint:
 
 - GET `clients`: lista todos los clientes.
 - GET `clients/{id}`: obtiene el cliente especificado por el `id`.
 - POST `clients`: crea un nuevo cliente.
-- PUT `clients`: actualiza un cliente.
+- PUT `clients/{id}`: actualiza un cliente.
 - DELETE `clients/{id}`: elimina un cliente existente.
 
-Ejemplo usando [HTTPie](https://httpie.io/):
+## Ejemplo usando [HTTPie](https://httpie.io/) (endpoint desplegado en [fly.io](https://fly.io)):
+
+Agrego un par de clientes a la base de datos:
 
 ```
 # POST
 http -f POST https://black-wood-1374.fly.dev/clients id=1 name="Roberto Lopéz" email=rlopez@gmail.com
 http -f POST https://black-wood-1374.fly.dev/clients id=2 name="María Fernandez" email=mfernandez@gmail.com
+```
 
+Obtengo todos los clientes:
+
+```
 # GET
 http https://black-wood-1374.fly.dev/clients
 ```
+
+Respuesta:
 
 ```json
 [
@@ -37,8 +45,6 @@ http https://black-wood-1374.fly.dev/clients
   }
 ]
 ```
-
-
 
 ## Resumen de la implementación
 
