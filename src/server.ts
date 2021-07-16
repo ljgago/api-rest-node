@@ -1,4 +1,5 @@
 import express from 'express';
+import basicAuth from 'express-basic-auth'
 
 // import { Client } from './core/entities/client.entity';
 // import ClientJSON from './clients.json';
@@ -17,6 +18,7 @@ const clientController = ProviderClientController(clientService);
 
 const app = express();
 
+app.use(basicAuth({ users: {'admin': 'admin'} }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

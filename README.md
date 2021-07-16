@@ -12,21 +12,25 @@ Descripción del enpoint:
 - PUT `clients/{id}`: actualiza un cliente.
 - DELETE `clients/{id}`: elimina un cliente existente.
 
+La api tiene autenticación basica con el `user: admin` y `pass: admin`.
+
+Tambien se define la documentación de la api en `api/api.yaml` usando la especificación OpenAPI 3.0 .
+
 ## Ejemplo usando [HTTPie](https://httpie.io/) (endpoint desplegado en [fly.io](https://fly.io)):
 
 Agrego un par de clientes a la base de datos:
 
 ```
 # POST
-http -f POST https://black-wood-1374.fly.dev/clients id=1 name="Roberto Lopéz" email=rlopez@gmail.com
-http -f POST https://black-wood-1374.fly.dev/clients id=2 name="María Fernandez" email=mfernandez@gmail.com
+http -f POST https://admin:admin@black-wood-1374.fly.dev/clients id=1 name="Roberto Lopéz" email=rlopez@gmail.com
+http -f POST https://admin:admin@black-wood-1374.fly.dev/clients id=2 name="María Fernandez" email=mfernandez@gmail.com
 ```
 
 Obtengo todos los clientes:
 
 ```
 # GET
-http https://black-wood-1374.fly.dev/clients
+http https://admin:admin@black-wood-1374.fly.dev/clients
 ```
 
 Respuesta:
